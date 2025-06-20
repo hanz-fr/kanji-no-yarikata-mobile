@@ -1,79 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:kanji_no_yarikata_mobile/models/settings.dart';
+import 'package:kanji_no_yarikata_mobile/screens/homepage.dart';
+import 'package:provider/provider.dart';
 
-/// Flutter code sample for [AppBar].
+void main() => runApp(
+  ChangeNotifierProvider(
+    create: (context) => SettingsModel(),
+    child: MyApp(),
+  ),
+);
 
-void main() => runApp(const AppBarApp());
-
-class AppBarApp extends StatelessWidget {
-  const AppBarApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(home: AppBarExample());
-  }
-}
-
-class AppBarExample extends StatelessWidget {
-  const AppBarExample({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('AppBar Demo'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(const SnackBar(content: Text('This is a snackbar')));
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the next page',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) {
-                    return Scaffold(
-                      appBar: AppBar(title: const Text('Next page')),
-                      body: Column(
-                        children: [
-                          Card(
-                            margin: EdgeInsets.all(10.0),
-                            elevation: 1,
-                            child: Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Text("Test"),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Text("Test"),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Text("Test"),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              );
-            },
-          ),  
-        ],
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.white70,
+          primary: Color.fromRGBO(45, 45, 45, 1),
+        ),
+        textTheme: GoogleFonts.rubikTextTheme(),
       ),
-      body: const Center(child: Text('This is the home page', style: TextStyle(fontSize: 24))),
+      home: HomepageScreen()
     );
   }
 }
