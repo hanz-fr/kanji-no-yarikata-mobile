@@ -1,3 +1,3 @@
-# kanji_no_yarikata_mobile
+# 漢字のやり方 Mobile
 
-A new Flutter project.
+Mobile version of Kanji No Yarikata. This app has the exact same features as the website.
