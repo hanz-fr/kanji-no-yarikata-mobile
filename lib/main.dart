@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kanji_no_yarikata_mobile/models/settings.dart';
-import 'package:kanji_no_yarikata_mobile/screens/homepage.dart';
+import 'package:kanji_no_yarikata_mobile/presentation/pages/homepage.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(

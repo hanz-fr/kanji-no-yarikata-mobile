@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kanji_no_yarikata_mobile/components/settings_dialog.dart';
+import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/filter_dialog.dart';
+import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/settings_dialog.dart';
 
 import 'all_kanji.dart';
 
@@ -82,6 +83,17 @@ class HomepageScreen extends StatelessWidget {
               width: double.infinity,
               child: TextField(
                 decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.tune_rounded),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return FilterDialog();
+                        },
+                      );
+                    },
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
