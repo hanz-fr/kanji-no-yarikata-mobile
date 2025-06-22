@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kanji_no_yarikata_mobile/models/settings.dart';
+import 'package:kanji_no_yarikata_mobile/data/models/settings.dart';
 import 'package:provider/provider.dart';
 
 class SettingsDialog extends StatelessWidget {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kanji_no_yarikata_mobile/data/models/search_filter.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dropdown/grade_dropdown.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dropdown/jlpt_dropdown.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dropdown/search_by_dropdown.dart';
+import 'package:provider/provider.dart';
 
 class FilterDialog extends StatelessWidget {
   const FilterDialog({super.key});
@@ -41,11 +43,20 @@ class FilterDialog extends StatelessWidget {
         ],
       ),
       actions: [
+        OutlinedButton(
+          onPressed: () {
+            Provider.of<SearchFilterModel>(context, listen: false).resetFilters();
+          },
+          child: const Text("Reset Filter"),
+        ),
         ElevatedButton(
-          onPressed: (){},
-          child: const Text("Test")
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text("Save")
         ),
       ],
+      actionsAlignment: MainAxisAlignment.center,
     );
   }
 }

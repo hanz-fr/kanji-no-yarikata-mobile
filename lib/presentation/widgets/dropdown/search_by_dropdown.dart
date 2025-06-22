@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kanji_no_yarikata_mobile/data/models/search_filter.dart';
+import 'package:provider/provider.dart';
 
 class SearchByDropdown extends StatefulWidget {
   const SearchByDropdown({super.key});
@@ -8,14 +10,16 @@ class SearchByDropdown extends StatefulWidget {
 }
 
 class SearchByDropdownState extends State<SearchByDropdown> {
-  String selectedValue = 'All';
 
   final List<String> items = ['All', 'Kanji', 'Meaning', 'On\'yomi', 'Kun\'yomi'];
 
   @override
   Widget build(BuildContext context) {
+
+    final searchFilter = Provider.of<SearchFilterModel>(context);
+
     return DropdownButton<String>(
-      value: selectedValue,
+      value: searchFilter.searchBy,
       items: items.map((String value) {
         return DropdownMenuItem(
           value: value,
@@ -23,9 +27,9 @@ class SearchByDropdownState extends State<SearchByDropdown> {
         );
       }).toList(),
       onChanged: (String? newValue) {
-        setState(() {
-          selectedValue = newValue!;
-        });
+        if (newValue != null) {
+          Provider.of<SearchFilterModel>(context, listen: false).searchBy = newValue;
+        }
       },
     );
   }
