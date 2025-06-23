@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/filter_dialog.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/settings_dialog.dart';
 
-import 'all_kanji.dart';
+import 'all_kanji/all_kanji.dart';
 
 class HomepageScreen extends StatelessWidget {
   const HomepageScreen({super.key});
