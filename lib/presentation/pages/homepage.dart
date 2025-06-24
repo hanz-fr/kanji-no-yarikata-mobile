@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kanji_no_yarikata_mobile/core/theme/theme.dart';
+import 'package:kanji_no_yarikata_mobile/core/theme/theme_provider.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/filter_dialog.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/settings_dialog.dart';
+import 'package:provider/provider.dart';
 
 import 'all_kanji/all_kanji.dart';
 
@@ -15,6 +18,9 @@ class HomepageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Icon toggleThemeIcon = (Provider.of<ThemeProvider>(context, listen: false).themeData == lightMode) ? Icon(Icons.dark_mode_outlined) : Icon(Icons.light_mode_outlined);
+
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         color: Colors.transparent,
@@ -41,8 +47,10 @@ class HomepageScreen extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.light_mode_outlined),
+                onPressed: () {
+                  Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                },
+                icon: toggleThemeIcon,
               ),
             ),
           ),

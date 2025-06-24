@@ -10,7 +10,10 @@ class KanjiHeader extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(3),
-        side: BorderSide(color: Color.fromRGBO(208, 208, 208, 1), width: 1),
+        side: BorderSide(
+          color: Color.fromRGBO(208, 208, 208, 1),
+          width: 1,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),

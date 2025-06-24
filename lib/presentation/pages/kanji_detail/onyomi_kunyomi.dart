@@ -24,7 +24,7 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 3, vertical: 1),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 1),
+                    border: Border.all(color: Color.fromRGBO(208, 208, 208, 1)),
                   ),
                   child: Text("音読み", style: TextStyle(fontSize: 15)),
                 ),
@@ -37,7 +37,7 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 3, vertical: 1),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 1),
+                    border: Border.all(color: Color.fromRGBO(208, 208, 208, 1)),
                   ),
                   child: Text("訓読み", style: TextStyle(fontSize: 15)),
                 ),

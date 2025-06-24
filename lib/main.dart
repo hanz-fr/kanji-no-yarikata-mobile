@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:kanji_no_yarikata_mobile/core/theme/theme_provider.dart';
 import 'package:kanji_no_yarikata_mobile/data/models/search_filter.dart';
 import 'package:kanji_no_yarikata_mobile/data/models/settings.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/pages/homepage.dart';
@@ -13,7 +13,10 @@ void main() => runApp(
       ),
       ChangeNotifierProvider(
         create: (context) => SearchFilterModel(),
-      )
+      ),
+      ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+      ),
     ],
     child: MyApp(), 
   ),
@@ -25,29 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.white70,
-          primary: Color.fromRGBO(45, 45, 45, 1),
-        ),
-        textTheme: GoogleFonts.rubikTextTheme(),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromRGBO(45, 45, 45, 1),
-            foregroundColor: Colors.white70,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8))
-            )
-          )
-        ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8))
-            )
-          )
-        )
-      ),
+      theme: Provider.of<ThemeProvider>(context).themeData,
       home: HomepageScreen()
     );
   }

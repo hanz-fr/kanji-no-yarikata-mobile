@@ -22,7 +22,7 @@ class N5KanjiSection extends StatelessWidget {
               Expanded(
                 child: Divider(
                   thickness: 1.5,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
             ],
@@ -40,7 +40,7 @@ class N5KanjiSection extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6),
                 side: BorderSide(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                   width: 1,
                 ),
               ),
