@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class N3KanjiSection extends StatelessWidget {
-  const N3KanjiSection({super.key});
+  final void Function(String kanjiId) onKanjiTap;
+  
+  const N3KanjiSection({
+    super.key,
+    required this.onKanjiTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +38,14 @@ class N3KanjiSection extends StatelessWidget {
               color: Colors.transparent,
               elevation: 0,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(6),
                 side: BorderSide(
                   color: Theme.of(context).primaryColor,
                   width: 1,
                 ),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () => onKanjiTap('光'),
                 child: Center(child: Text("光", style: TextStyle(fontSize: 20))),
               ),
             );
