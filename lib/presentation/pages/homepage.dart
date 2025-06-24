@@ -22,6 +22,7 @@ class HomepageScreen extends StatelessWidget {
     Icon toggleThemeIcon = (Provider.of<ThemeProvider>(context, listen: false).themeData == lightMode) ? Icon(Icons.dark_mode_outlined) : Icon(Icons.light_mode_outlined);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       bottomNavigationBar: BottomAppBar(
         color: Colors.transparent,
         elevation: 0,
