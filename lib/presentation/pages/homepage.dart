@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'all_kanji/all_kanji.dart';
 import 'package:kanji_no_yarikata_mobile/core/theme/theme.dart';
 import 'package:kanji_no_yarikata_mobile/core/theme/theme_provider.dart';
+import 'package:kanji_no_yarikata_mobile/domain/entities/inu.dart';
+import 'package:kanji_no_yarikata_mobile/providers/kanji_provider.dart';
+import 'package:kanji_no_yarikata_mobile/providers/inu_provider.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/filter_dialog.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/widgets/dialog/settings_dialog.dart';
-import 'package:provider/provider.dart';
 
-import 'all_kanji/all_kanji.dart';
 
 class HomepageScreen extends StatelessWidget {
   const HomepageScreen({super.key});
@@ -20,6 +23,8 @@ class HomepageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Icon toggleThemeIcon = (Provider.of<ThemeProvider>(context, listen: false).themeData == lightMode) ? Icon(Icons.dark_mode_outlined) : Icon(Icons.light_mode_outlined);
+    final dogProvider = Provider.of<DogProvider>(context);
+    final kanjiProvider = Provider.of<KanjiProvider>(context);
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
@@ -109,6 +114,30 @@ class HomepageScreen extends StatelessWidget {
                   labelText: 'Search kanji...',
                 ),
               ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              dogProvider.addDog(Dog(id: 1, name: 'Buddy', age: 3));
+            },
+            child: const Text("Add Dog"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              kanjiProvider.loadKanji();
+            },
+            child: const Text("Get all Kanji"),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: dogProvider.dogs.length,
+              itemBuilder: (context, index) {
+                final dog = dogProvider.dogs[index];
+                return ListTile(
+                  title: Text(dog.name),
+                  subtitle: Text('Age: ${dog.age}'),
+                );
+              },
             ),
           ),
         ],
