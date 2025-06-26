@@ -34,21 +34,9 @@ class KanjiDatabase implements KanjiRepository {
   }
 
   @override
-  Future<void> deleteKanji(int id) {
-    // TODO: implement deleteKanji
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> editKanji(Kanji updatedKanji) {
-    // TODO: implement editKanji
-    throw UnimplementedError();
-  }
-
-  @override
   Future<List<Kanji>> getAllKanji() async {
     final db = await database;
-    final mappedKanji = await db.query('kanji');
+    final mappedKanji = await db.query('Kanji',);
 
     return List.generate(
       mappedKanji.length,
@@ -57,8 +45,47 @@ class KanjiDatabase implements KanjiRepository {
   }
 
   @override
-  Future<void> insertKanji(Kanji kanji) {
-    // TODO: implement insertKanji
-    throw UnimplementedError();
+  Future<List<Kanji>> getN5Kanji() async {
+    final db = await database;
+    final mappedN5Kanji = await db.query(
+      'Kanji',
+      where: 'jlpt = ?',
+      whereArgs: ['N5'],
+    );
+
+    return List.generate(
+      mappedN5Kanji.length,
+      (i) => KanjiModel.fromMap(mappedN5Kanji[i]),
+    );
+  }
+
+  @override
+  Future<List<Kanji>> getN4Kanji() async {
+    final db = await database;
+    final mappedN4Kanji = await db.query(
+      'Kanji',
+      where: 'jlpt = ?',
+      whereArgs: ['N4'],
+    );
+
+    return List.generate(
+      mappedN4Kanji.length,
+      (i) => KanjiModel.fromMap(mappedN4Kanji[i]),
+    );
+  }
+
+  @override
+  Future<List<Kanji>> getN3Kanji() async {
+    final db = await database;
+    final mappedN3Kanji = await db.query(
+      'Kanji',
+      where: 'jlpt = ?',
+      whereArgs: ['N3'],
+    );
+
+    return List.generate(
+      mappedN3Kanji.length,
+      (i) => KanjiModel.fromMap(mappedN3Kanji[i]),
+    );
   }
 }

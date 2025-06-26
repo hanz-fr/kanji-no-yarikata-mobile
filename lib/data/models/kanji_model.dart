@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import '../../domain/entities/kanji.dart';
 
 class KanjiModel extends Kanji {
@@ -20,8 +18,6 @@ class KanjiModel extends Kanji {
     required super.joyoListStatus,
     required super.mnemonic,
     required super.svg,
-    required super.kanjiExamples,
-    required super.kanjiComponents,
   });
 
   factory KanjiModel.fromMap(Map<String, dynamic> map) {
@@ -42,8 +38,6 @@ class KanjiModel extends Kanji {
       joyoListStatus: map['joyoListStatus'],
       mnemonic: map['mnemonic'],
       svg: map['svg'],
-      kanjiExamples: map['kanjiExamples'] == null ? [] : List<String>.from(jsonDecode(map['kanjiExamples'])),
-      kanjiComponents: map['kanjiComponents'] == null ? [] : List<String>.from(jsonDecode(map['kanjiComponents'])),
     );
   }
 
@@ -65,8 +59,6 @@ class KanjiModel extends Kanji {
       'joyoListStatus': joyoListStatus,
       'mnemonic': mnemonic,
       'svg': svg,
-      'kanjiExamples': jsonEncode(kanjiExamples),
-      'kanjiComponents': jsonEncode(kanjiComponents),
     };
   }
 }

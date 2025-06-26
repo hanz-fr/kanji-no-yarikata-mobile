@@ -15,8 +15,6 @@ class Kanji {
   final String joyoListStatus;
   final String mnemonic;
   final String svg;
-  final List kanjiExamples;
-  final List kanjiComponents;
 
   const Kanji({
     required this.id,
@@ -35,7 +33,5 @@ class Kanji {
     required this.joyoListStatus,
     required this.mnemonic,
     required this.svg,
-    required this.kanjiExamples,
-    required this.kanjiComponents,
   });
 }

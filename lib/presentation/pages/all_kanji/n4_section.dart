@@ -1,15 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../providers/kanji_provider.dart';
 
 class N4KanjiSection extends StatelessWidget {
   final void Function(String kanjiId) onKanjiTap;
-  
-  const N4KanjiSection({
-    super.key,
-    required this.onKanjiTap
-  });
+
+  const N4KanjiSection({super.key, required this.onKanjiTap});
 
   @override
   Widget build(BuildContext context) {
+    final kanjiProvider = Provider.of<KanjiProvider>(context);
+    final n4Kanji = kanjiProvider.n4Kanji;
+
+    if (kanjiProvider.n4Kanji.isEmpty) {
+      return Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Flex(
+              direction: Axis.horizontal,
+              spacing: 10,
+              children: [
+                Text("N4 Kanji"),
+                Expanded(
+                  child: Divider(
+                    thickness: 1.5,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30.0),
+            child: Text("No N4 Kanji has been added yet."),
+          ),
+        ],
+      );
+    }
+
     return Column(
       children: [
         Padding(
@@ -28,12 +58,17 @@ class N4KanjiSection extends StatelessWidget {
             ],
           ),
         ),
-        GridView.count(
+        GridView.builder(
           padding: EdgeInsets.all(20.0),
-          crossAxisCount: 4,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+          ),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          children: List.generate(30, (index) {
+          itemCount: n4Kanji.length,
+          itemBuilder: (context, int index) {
+            final kanji = n4Kanji[index];
+
             return Card(
               color: Colors.transparent,
               elevation: 0,
@@ -45,11 +80,13 @@ class N4KanjiSection extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () => onKanjiTap('出'),
-                child: Center(child: Text("出", style: TextStyle(fontSize: 20))),
+                onTap: () => onKanjiTap(kanji.id),
+                child: Center(
+                  child: Text(kanji.kanji, style: TextStyle(fontSize: 20)),
+                ),
               ),
             );
-          }),
+          },
         ),
       ],
     );

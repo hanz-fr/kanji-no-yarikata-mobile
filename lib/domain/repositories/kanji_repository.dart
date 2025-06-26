@@ -1,8 +1,8 @@
 import '../entities/kanji.dart';
 
 abstract class KanjiRepository {
-  Future<void> insertKanji(Kanji kanji);
   Future<List<Kanji>> getAllKanji();
-  Future<void> editKanji(Kanji updatedKanji);
-  Future<void> deleteKanji(int id);
+  Future<List<Kanji>> getN5Kanji();
+  Future<List<Kanji>> getN4Kanji();
+  Future<List<Kanji>> getN3Kanji();
 }

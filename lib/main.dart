@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_no_yarikata_mobile/core/theme/theme_provider.dart';
-import 'package:kanji_no_yarikata_mobile/data/datasources/inu_db.dart';
 import 'package:kanji_no_yarikata_mobile/data/datasources/kanji_database.dart';
 import 'package:kanji_no_yarikata_mobile/data/models/search_filter.dart';
 import 'package:kanji_no_yarikata_mobile/data/models/settings.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/pages/homepage.dart';
-import 'package:kanji_no_yarikata_mobile/providers/inu_provider.dart';
 import 'package:kanji_no_yarikata_mobile/providers/kanji_provider.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final dogDatabase = DogDatabase();
   final kanjiDatabase = KanjiDatabase();
 
   runApp(
@@ -21,8 +18,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (context) => SettingsModel()),
         ChangeNotifierProvider(create: (context) => SearchFilterModel()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
-        ChangeNotifierProvider(create: (context) => DogProvider(repository: dogDatabase),),
-        ChangeNotifierProvider(create: (context) => KanjiProvider(repository: kanjiDatabase)),
+        ChangeNotifierProvider(create: (context) => KanjiProvider(repository: kanjiDatabase,)),
       ],
       child: MyApp(),
     ),
