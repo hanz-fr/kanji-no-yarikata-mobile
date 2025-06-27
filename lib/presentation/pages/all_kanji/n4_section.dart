@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../domain/entities/kanji.dart';
 import '../../../providers/kanji_provider.dart';
 
 class N4KanjiSection extends StatelessWidget {
-  final void Function(String kanjiId) onKanjiTap;
+  final void Function(Kanji kanjiId) onKanjiTap;
 
   const N4KanjiSection({super.key, required this.onKanjiTap});
 
@@ -80,7 +81,7 @@ class N4KanjiSection extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () => onKanjiTap(kanji.id),
+                onTap: () => onKanjiTap(kanji),
                 child: Center(
                   child: Text(kanji.kanji, style: TextStyle(fontSize: 20)),
                 ),

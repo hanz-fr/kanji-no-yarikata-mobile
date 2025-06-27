@@ -4,13 +4,15 @@ import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/header.
 import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/main_information.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/onyomi_kunyomi.dart';
 
+import '../../../domain/entities/kanji.dart';
+
 class KanjiDetailScreen extends StatelessWidget {
   const KanjiDetailScreen({
     super.key,
-    required this.kanjiId
+    required this.kanji
   });
 
-  final String kanjiId;
+  final Kanji kanji;
 
   @override 
   Widget build(BuildContext context) {
@@ -29,12 +31,12 @@ class KanjiDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                kanjiId,
+                kanji.kanji,
                 style: TextStyle(
                   fontSize: 40
                 ),
               ),
-              Text("(Meaning 1, Meaning 2)"),
+              Text(kanji.meaning),
               Row(
                 spacing: 8,
                 mainAxisAlignment: MainAxisAlignment.center,

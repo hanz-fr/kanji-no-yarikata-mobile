@@ -4,11 +4,13 @@ import 'package:kanji_no_yarikata_mobile/presentation/pages/all_kanji/n4_section
 import 'package:kanji_no_yarikata_mobile/presentation/pages/all_kanji/n5_section.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/kanji_detail.dart';
 
+import '../../../domain/entities/kanji.dart';
+
 class AllKanjiScreen extends StatelessWidget {
   const AllKanjiScreen({super.key});
 
-  void _navigateToKanjiDetailPage(BuildContext context, String kanjiId) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => KanjiDetailScreen(kanjiId: kanjiId,)));
+  void _navigateToKanjiDetailPage(BuildContext context, Kanji kanji) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => KanjiDetailScreen(kanji: kanji,)));
   }
 
   @override
@@ -25,9 +27,9 @@ class AllKanjiScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            N5KanjiSection(onKanjiTap: (kanjiId) => _navigateToKanjiDetailPage(context, kanjiId),),
-            N4KanjiSection(onKanjiTap: (kanjiId) => _navigateToKanjiDetailPage(context, kanjiId),),
-            N3KanjiSection(onKanjiTap: (kanjiId) => _navigateToKanjiDetailPage(context, kanjiId),),
+            N5KanjiSection(onKanjiTap: (kanji) => _navigateToKanjiDetailPage(context, kanji),),
+            N4KanjiSection(onKanjiTap: (kanji) => _navigateToKanjiDetailPage(context, kanji),),
+            N3KanjiSection(onKanjiTap: (kanji) => _navigateToKanjiDetailPage(context, kanji),),
           ],
         ),
       ),
