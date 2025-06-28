@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class OnyomiKunyomiContainer extends StatelessWidget {
-  const OnyomiKunyomiContainer({super.key});
+  const OnyomiKunyomiContainer({
+    super.key,
+    required this.onyomi,
+    required this.onyomiRomaji,
+    required this.kunyomi,
+    required this.kunyomiRomaji,
+  });
+
+  final String? onyomi;
+  final String? onyomiRomaji;
+  final String? kunyomi;
+  final String? kunyomiRomaji;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +39,7 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                   ),
                   child: Text("音読み", style: TextStyle(fontSize: 15)),
                 ),
-                Text("オニョミ"),
+                Flexible(child: Text(onyomi as String)),
               ],
             ),
             Row(
@@ -41,7 +52,7 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                   ),
                   child: Text("訓読み", style: TextStyle(fontSize: 15)),
                 ),
-                Text("くにょみ"),
+                Flexible(child: Text(kunyomi as String)),
               ],
             ),
           ],

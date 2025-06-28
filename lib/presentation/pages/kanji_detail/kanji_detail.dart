@@ -7,14 +7,11 @@ import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/onyomi_
 import '../../../domain/entities/kanji.dart';
 
 class KanjiDetailScreen extends StatelessWidget {
-  const KanjiDetailScreen({
-    super.key,
-    required this.kanji
-  });
+  const KanjiDetailScreen({super.key, required this.kanji});
 
   final Kanji kanji;
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -30,12 +27,7 @@ class KanjiDetailScreen extends StatelessWidget {
             spacing: 10,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                kanji.kanji,
-                style: TextStyle(
-                  fontSize: 40
-                ),
-              ),
+              Text(kanji.kanji, style: TextStyle(fontSize: 40)),
               Text(kanji.meaning),
               Row(
                 spacing: 8,
@@ -46,20 +38,32 @@ class KanjiDetailScreen extends StatelessWidget {
                       backgroundColor: Color.fromRGBO(227, 227, 227, 1),
                     ),
                     onPressed: () {},
-                    icon: Icon(Icons.volume_up_outlined)
+                    icon: Icon(Icons.volume_up_outlined),
                   ),
                   IconButton(
                     style: IconButton.styleFrom(
                       backgroundColor: Color.fromRGBO(227, 227, 227, 1),
                     ),
                     onPressed: () {},
-                    icon: Icon(Icons.draw_outlined)
-                  )
+                    icon: Icon(Icons.draw_outlined),
+                  ),
                 ],
               ),
-              KanjiHeader(),
-              OnyomiKunyomiContainer(),
-              MainInformationContainer(),
+              KanjiHeader(jlpt: kanji.jlpt, grade: kanji.grade, strokes: kanji.strokeCount,),
+              OnyomiKunyomiContainer(
+                onyomi: kanji.onyomi,
+                onyomiRomaji: kanji.onyomiRomaji,
+                kunyomi: kanji.kunyomi,
+                kunyomiRomaji: kanji.kunyomiRomaji,
+              ),
+              MainInformationContainer(
+                radical: kanji.radical,
+                radicalNumber: kanji.radicalNumber,
+                frequency: kanji.frequency, 
+                joyoListStatus: kanji.joyoListStatus,
+                mnemonic: kanji.mnemonic,
+                components: [],
+              ),
               KanjiExamplesContainer(),
             ],
           ),

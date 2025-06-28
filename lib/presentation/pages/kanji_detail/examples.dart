@@ -23,9 +23,6 @@ class KanjiExamplesContainer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text("漢字"),
-                Text("ふりがな"),
-                Text("Meaning"),
               ],
             ),
           ],

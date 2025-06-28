@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
 class MainInformationContainer extends StatelessWidget {
-  const MainInformationContainer({super.key});
+  const MainInformationContainer({
+    super.key,
+    required this.radical,
+    required this.radicalNumber,
+    required this.frequency,
+    required this.components,
+    required this.joyoListStatus,
+    required this.mnemonic,
+  });
+
+  final String radical;
+  final int radicalNumber;
+  final String frequency;
+  final List? components;
+  final String joyoListStatus;
+  final String mnemonic;
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +34,25 @@ class MainInformationContainer extends StatelessWidget {
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[Text("Radical:"), Text("0")],
+              children: <Widget>[
+                Text("Radical:"),
+                Text("$radical ($radicalNumber)"),
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[Text("Frequency:"), Text("Common")],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[Text("Components:"), Text("(一) One")],
+              children: <Widget>[Text("Frequency:"), Text(frequency)],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Joyo Status:"),
-                Text("常用jōyō (regular-use)"),
+                Text("Components:"),
+                Row(children: components?.map((e) => Text(e)).toList() ?? []),
               ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[Text("Joyo Status:"), Text(joyoListStatus)],
             ),
           ],
         ),
