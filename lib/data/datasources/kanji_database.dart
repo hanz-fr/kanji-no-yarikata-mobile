@@ -88,4 +88,18 @@ class KanjiDatabase implements KanjiRepository {
       (i) => KanjiModel.fromMap(mappedN3Kanji[i]),
     );
   }
+
+  @override
+  Future<String?> getKanjiComponents(String kanjiId) async {
+    final db = await database;
+    final kanjiComponents = await db.query(
+      'KanjiComponents',
+      columns: ['component'],
+      where: 'kanjiId = ?',
+      whereArgs: [kanjiId],
+      limit: 1,
+    );
+
+    return kanjiComponents.isNotEmpty ? kanjiComponents.first['component']?.toString() : null;
+  } 
 }

@@ -3,6 +3,8 @@ import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/example
 import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/header.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/main_information.dart';
 import 'package:kanji_no_yarikata_mobile/presentation/pages/kanji_detail/onyomi_kunyomi.dart';
+import 'package:kanji_no_yarikata_mobile/providers/kanji_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../domain/entities/kanji.dart';
 
@@ -13,6 +15,7 @@ class KanjiDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -56,13 +59,18 @@ class KanjiDetailScreen extends StatelessWidget {
                 kunyomi: kanji.kunyomi,
                 kunyomiRomaji: kanji.kunyomiRomaji,
               ),
-              MainInformationContainer(
-                radical: kanji.radical,
-                radicalNumber: kanji.radicalNumber,
-                frequency: kanji.frequency, 
-                joyoListStatus: kanji.joyoListStatus,
-                mnemonic: kanji.mnemonic,
-                components: [],
+              Consumer<KanjiProvider>(
+                builder: (context, provider, child) {
+                  final components = provider.components;
+                  return MainInformationContainer(
+                    radical: kanji.radical,
+                    radicalNumber: kanji.radicalNumber,
+                    frequency: kanji.frequency, 
+                    joyoListStatus: kanji.joyoListStatus,
+                    mnemonic: kanji.mnemonic,
+                    components: components,
+                  );
+                },
               ),
               KanjiExamplesContainer(),
             ],

@@ -5,9 +5,12 @@ import '../domain/repositories/kanji_repository.dart';
 class KanjiProvider extends ChangeNotifier {
   
   final KanjiRepository repository;
+
   List<Kanji> n5Kanji = [];
   List<Kanji> n4Kanji = [];
   List<Kanji> n3Kanji = [];
+
+  String? components;
 
   KanjiProvider({required this.repository});
 
@@ -15,6 +18,11 @@ class KanjiProvider extends ChangeNotifier {
     n5Kanji = await repository.getN5Kanji();
     n4Kanji = await repository.getN4Kanji();
     n3Kanji = await repository.getN3Kanji();
+    notifyListeners();
+  }
+
+  Future<void> loadKanjiComponents(String kanjiId) async {
+    components = await repository.getKanjiComponents(kanjiId);
     notifyListeners();
   }
 

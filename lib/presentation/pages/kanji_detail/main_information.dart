@@ -14,7 +14,7 @@ class MainInformationContainer extends StatelessWidget {
   final String radical;
   final int radicalNumber;
   final String frequency;
-  final List? components;
+  final String? components;
   final String joyoListStatus;
   final String mnemonic;
 
@@ -47,7 +47,7 @@ class MainInformationContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("Components:"),
-                Row(children: components?.map((e) => Text(e)).toList() ?? []),
+                Text(components ?? ""),
               ],
             ),
             Row(

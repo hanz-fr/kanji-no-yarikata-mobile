@@ -35,3 +35,16 @@ class Kanji {
     required this.svg,
   });
 }
+
+class KanjiComponents {
+  final String id;
+  final String kanjiId;
+  final String component;
+
+
+  const KanjiComponents({
+    required this.id,
+    required this.kanjiId,
+    required this.component
+  });
+}

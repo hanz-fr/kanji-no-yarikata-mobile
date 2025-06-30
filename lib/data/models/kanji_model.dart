@@ -26,7 +26,7 @@ class KanjiModel extends Kanji {
       kanji: map['kanji'],
       meaning: map['meaning'],
       jlpt: map['jlpt'],
-      grade: map['grade'],  
+      grade: map['grade'],
       strokeCount: map['strokeCount'],
       onyomi: map['onyomi'],
       onyomiRomaji: map['onyomiRomaji'],
@@ -61,4 +61,12 @@ class KanjiModel extends Kanji {
       'svg': svg,
     };
   }
+}
+
+class KanjiComponentsModel extends KanjiComponents {
+  KanjiComponentsModel({
+    required super.id,
+    required super.kanjiId,
+    required super.component,
+  });
 }
