@@ -29,7 +29,7 @@ class KanjiHeader extends StatelessWidget {
             Column(
               children: <Widget>[
                 Text(jlpt, style: TextStyle(fontSize: 18)),
-                Text("JLPT", style: TextStyle(fontSize: 10)),
+                const Text("JLPT", style: TextStyle(fontSize: 10)),
               ],
             ),
             const SizedBox(
@@ -43,7 +43,7 @@ class KanjiHeader extends StatelessWidget {
             Column(
               children: <Widget>[
                 Text(grade.toString(), style: TextStyle(fontSize: 18)),
-                Text("Grade", style: TextStyle(fontSize: 10)),
+                const Text("Grade", style: TextStyle(fontSize: 10)),
               ],
             ),
             const SizedBox(
@@ -57,7 +57,7 @@ class KanjiHeader extends StatelessWidget {
             Column(
               children: <Widget>[
                 Text(strokes.toString(), style: TextStyle(fontSize: 18)),
-                Text("Strokes", style: TextStyle(fontSize: 10)),
+                const Text("Strokes", style: TextStyle(fontSize: 10)),
               ],
             ),
           ],

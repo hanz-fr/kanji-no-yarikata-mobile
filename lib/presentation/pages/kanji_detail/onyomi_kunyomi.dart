@@ -37,7 +37,7 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Color.fromRGBO(208, 208, 208, 1)),
                   ),
-                  child: Text("音読み", style: TextStyle(fontSize: 15)),
+                  child: const Text("音読み", style: TextStyle(fontSize: 15)),
                 ),
                 Flexible(child: Text(onyomi as String)),
               ],
@@ -50,7 +50,7 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Color.fromRGBO(208, 208, 208, 1)),
                   ),
-                  child: Text("訓読み", style: TextStyle(fontSize: 15)),
+                  child: const Text("訓読み", style: TextStyle(fontSize: 15)),
                 ),
                 Flexible(child: Text(kunyomi as String)),
               ],

@@ -105,7 +105,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                         },
                       );
                     },
-                    icon: Icon(Icons.settings_outlined),
+                    icon: const Icon(Icons.settings_outlined),
                   ),
                 ),
               ),
@@ -116,12 +116,12 @@ class _HomepageScreenState extends State<HomepageScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             spacing: 30,
             children: [
-              Text(
+              const Text(
                 "漢字のやり方",
                 style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
               ),
               Padding(
-                padding: EdgeInsetsGeometry.symmetric(horizontal: 35.0),
+                padding: const EdgeInsetsGeometry.symmetric(horizontal: 35.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: TextField(

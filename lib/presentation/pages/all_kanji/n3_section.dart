@@ -23,7 +23,7 @@ class N3KanjiSection extends StatelessWidget {
               direction: Axis.horizontal,
               spacing: 10,
               children: [
-                Text("N3 Kanji"),
+                const Text("N3 Kanji"),
                 Expanded(
                   child: Divider(
                     thickness: 1.5,
@@ -33,8 +33,8 @@ class N3KanjiSection extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 30.0),
             child: Text("No N3 Kanji has been added yet."),
           ),
         ],
@@ -49,7 +49,7 @@ class N3KanjiSection extends StatelessWidget {
             direction: Axis.horizontal,
             spacing: 10,
             children: [
-              Text("N3 Kanji"),
+              const Text("N3 Kanji"),
               Expanded(
                 child: Divider(
                   thickness: 1.5,
@@ -60,8 +60,8 @@ class N3KanjiSection extends StatelessWidget {
           ),
         ),
         GridView.builder(
-          padding: EdgeInsets.all(20.0),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          padding: const EdgeInsets.all(20.0),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
           ),
           shrinkWrap: true,

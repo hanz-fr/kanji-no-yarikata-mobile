@@ -18,14 +18,13 @@ class AllKanjiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use the arguments in your screen
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(false),
         ),
-        title: Text('All Kanji'),
+        title: const Text('All Kanji'),
       ),
       body: SingleChildScrollView(
         child: Column(

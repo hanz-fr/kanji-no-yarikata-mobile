@@ -18,8 +18,8 @@ class KanjiExamplesContainer extends StatelessWidget {
           spacing: 15,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("Examples"),
-            Padding(padding: EdgeInsetsGeometry.only(bottom: 1)),
+            const Text("Examples"),
+            const Padding(padding: EdgeInsetsGeometry.only(bottom: 1)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[

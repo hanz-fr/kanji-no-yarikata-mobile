@@ -35,7 +35,7 @@ class MainInformationContainer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Radical:"),
+                const Text("Radical:"),
                 Text("$radical ($radicalNumber)"),
               ],
             ),
@@ -46,7 +46,7 @@ class MainInformationContainer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Components:"),
+                const Text("Components:"),
                 Text(components ?? ""),
               ],
             ),
