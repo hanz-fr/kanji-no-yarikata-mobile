@@ -13,6 +13,7 @@ class AllKanjiScreen extends StatelessWidget {
 
   void _navigateToKanjiDetailPage(BuildContext context, Kanji kanji) {
     Provider.of<KanjiProvider>(context, listen: false).loadKanjiComponents(kanji.id);
+    Provider.of<KanjiProvider>(context, listen: false).loadKanjiExamples(kanji.id);
     Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => KanjiDetailScreen(kanji: kanji,)));
   }
 

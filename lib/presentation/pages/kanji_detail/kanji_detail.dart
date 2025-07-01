@@ -71,7 +71,12 @@ class KanjiDetailScreen extends StatelessWidget {
                   );
                 },
               ),
-              KanjiExamplesContainer(),
+              Consumer<KanjiProvider>(
+                builder: (context, provider, child) {
+                  final examples = provider.examples;
+                  return KanjiExamplesContainer(examples: examples);
+                },
+              ),
             ],
           ),
         ),

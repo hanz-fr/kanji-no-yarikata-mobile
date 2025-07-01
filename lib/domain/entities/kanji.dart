@@ -48,3 +48,19 @@ class KanjiComponents {
     required this.component
   });
 }
+
+class KanjiExamples {
+  final String id;
+  final String kanjiId;
+  final String word;
+  final String kanaReading;
+  final String meaning;
+
+  const KanjiExamples({
+    required this.id,
+    required this.kanjiId,
+    required this.word,
+    required this.kanaReading,
+    required this.meaning,
+  });
+}

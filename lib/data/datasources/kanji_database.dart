@@ -101,5 +101,17 @@ class KanjiDatabase implements KanjiRepository {
     );
 
     return kanjiComponents.isNotEmpty ? kanjiComponents.first['component']?.toString() : null;
-  } 
+  }
+
+  @override
+  Future<List<KanjiExamples?>> getKanjiExamples(String kanjiId) async {
+    final db = await database;
+    final kanjiExamples = await db.query(
+      'KanjiExamples',
+      where: 'kanjiId = ?',
+      whereArgs: [kanjiId],
+    );
+
+    return kanjiExamples.isNotEmpty ? List.generate(kanjiExamples.length, (i) => KanjiExamplesModel.fromMap(kanjiExamples[i])) : [];
+  }
 }

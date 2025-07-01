@@ -9,8 +9,9 @@ class KanjiProvider extends ChangeNotifier {
   List<Kanji> n5Kanji = [];
   List<Kanji> n4Kanji = [];
   List<Kanji> n3Kanji = [];
-
+  
   String? components;
+  List<KanjiExamples?> examples = [];
 
   KanjiProvider({required this.repository});
 
@@ -23,6 +24,11 @@ class KanjiProvider extends ChangeNotifier {
 
   Future<void> loadKanjiComponents(String kanjiId) async {
     components = await repository.getKanjiComponents(kanjiId);
+    notifyListeners();
+  }
+
+  Future<void> loadKanjiExamples(String kanjiId) async {
+    examples = await repository.getKanjiExamples(kanjiId);
     notifyListeners();
   }
 

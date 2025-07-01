@@ -70,3 +70,23 @@ class KanjiComponentsModel extends KanjiComponents {
     required super.component,
   });
 }
+
+class KanjiExamplesModel extends KanjiExamples {
+  KanjiExamplesModel({
+    required super.id,
+    required super.kanjiId,
+    required super.word,
+    required super.kanaReading,
+    required super.meaning,
+  });
+
+  factory KanjiExamplesModel.fromMap(Map<String, dynamic> map) {
+    return KanjiExamplesModel(
+      id: map['id'],
+      kanjiId: map['kanjiId'],
+      word: map['word'],
+      kanaReading: map['kanaReading'],
+      meaning: map['meaning'],
+    );
+  }
+}
