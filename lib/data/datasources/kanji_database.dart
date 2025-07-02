@@ -21,14 +21,20 @@ class KanjiDatabase implements KanjiRepository {
     final directory = await getApplicationDocumentsDirectory();
     final dbPath = join(directory.path, dbName);
 
-    final exists = await File(dbPath).exists();
+    // force overwrite in dev environment
+    final data = await rootBundle.load('assets/database/kanji.db');
+    final bytes = data.buffer.asUint8List();
+    await File(dbPath).writeAsBytes(bytes, flush: true);
+    print("Kanji database copied to: $dbPath"); 
 
-    if (!exists) {
-      final data = await rootBundle.load('assets/database/kanji.db');
-      final bytes = data.buffer.asUint8List();
+    // final exists = await File(dbPath).exists();
 
-      await File(dbPath).writeAsBytes(bytes);
-    }
+    // if (!exists) {
+    //   final data = await rootBundle.load('assets/database/kanji.db');
+    //   final bytes = data.buffer.asUint8List();
+
+    //   await File(dbPath).writeAsBytes(bytes);
+    // }
 
     return openDatabase(dbPath);
   }
@@ -111,6 +117,8 @@ class KanjiDatabase implements KanjiRepository {
       where: 'kanjiId = ?',
       whereArgs: [kanjiId],
     );
+
+    print("kanji examples:  $kanjiExamples");
 
     return kanjiExamples.isNotEmpty ? List.generate(kanjiExamples.length, (i) => KanjiExamplesModel.fromMap(kanjiExamples[i])) : [];
   }
