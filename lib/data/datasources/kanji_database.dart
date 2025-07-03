@@ -10,6 +10,8 @@ import '../../domain/repositories/kanji_repository.dart';
 class KanjiDatabase implements KanjiRepository {
   static Database? _database;
 
+  static const bool forceCopyDb = true;
+
   Future<Database> get database async {
     if (_database != null) return _database!;
     _database = await _initKanjiDatabase();
@@ -21,11 +23,22 @@ class KanjiDatabase implements KanjiRepository {
     final directory = await getApplicationDocumentsDirectory();
     final dbPath = join(directory.path, dbName);
 
-    // force overwrite in dev environment
-    final data = await rootBundle.load('assets/database/kanji.db');
-    final bytes = data.buffer.asUint8List();
-    await File(dbPath).writeAsBytes(bytes, flush: true);
-    print("Kanji database copied to: $dbPath"); 
+    if (forceCopyDb) {
+      // Always overwrite (good for dev)
+      final byteData = await rootBundle.load('assets/database/kanji.db');
+      final bytes = byteData.buffer.asUint8List();
+      await File(dbPath).writeAsBytes(bytes, flush: true);
+      print('✅ Database overwritten at: $dbPath');
+    } else {
+      // Only copy once (for production)
+      final exists = await File(dbPath).exists();
+      if (!exists) {
+        final byteData = await rootBundle.load('assets/database/kanji.db');
+        final bytes = byteData.buffer.asUint8List();
+        await File(dbPath).writeAsBytes(bytes, flush: true);
+        print('📦 Database copied for the first time at: $dbPath');
+      }
+    }
 
     // final exists = await File(dbPath).exists();
 
