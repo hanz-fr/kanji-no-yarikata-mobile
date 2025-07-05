@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kanji_no_yarikata_mobile/providers/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class OnyomiKunyomiContainer extends StatelessWidget {
   const OnyomiKunyomiContainer({
@@ -16,6 +18,9 @@ class OnyomiKunyomiContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final settings = Provider.of<SettingsProvider>(context);
+
     return Card(
       color: Colors.transparent,
       elevation: 0,
@@ -39,7 +44,21 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                   ),
                   child: const Text("音読み", style: TextStyle(fontSize: 15)),
                 ),
-                Flexible(child: Text(onyomi as String)),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(onyomi as String),
+                      if (settings.showRomaji)
+                        Text(
+                          onyomiRomaji as String,
+                          style: TextStyle(
+                            color: Color.fromRGBO(180, 180, 180, 1)
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ],
             ),
             Row(
@@ -52,7 +71,21 @@ class OnyomiKunyomiContainer extends StatelessWidget {
                   ),
                   child: const Text("訓読み", style: TextStyle(fontSize: 15)),
                 ),
-                Flexible(child: Text(kunyomi as String)),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(kunyomi as String),
+                      if (settings.showRomaji)
+                        Text(
+                          kunyomiRomaji as String,
+                          style: TextStyle(
+                            color: Color.fromRGBO(180, 180, 180, 1)
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
