@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:kanji_no_yarikata_mobile/data/models/search_filter.dart';
+import 'package:kanji_no_yarikata_mobile/providers/search_filter_provider.dart';
 
 class JLPTDropdown extends StatefulWidget {
   const JLPTDropdown({super.key});
@@ -16,7 +16,7 @@ class JLPTDropdownState extends State<JLPTDropdown> {
   @override
   Widget build(BuildContext context) {
   
-    final searchFilter = Provider.of<SearchFilterModel>(context);
+    final searchFilter = Provider.of<SearchFilterProvider>(context);
   
     return DropdownButton<String>(
       value: searchFilter.jlpt,
@@ -28,7 +28,7 @@ class JLPTDropdownState extends State<JLPTDropdown> {
       }).toList(),
       onChanged: (String? newValue) {
         if (newValue != null) {
-          Provider.of<SearchFilterModel>(context, listen: false).jlpt = newValue;
+          Provider.of<SearchFilterProvider>(context, listen: false).jlpt = newValue;
         }
       },
     );

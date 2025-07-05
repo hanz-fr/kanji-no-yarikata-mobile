@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kanji_no_yarikata_mobile/data/models/search_filter.dart';
+import 'package:kanji_no_yarikata_mobile/providers/search_filter_provider.dart';
 import 'package:provider/provider.dart';
 
 class SearchByDropdown extends StatefulWidget {
@@ -16,7 +16,7 @@ class SearchByDropdownState extends State<SearchByDropdown> {
   @override
   Widget build(BuildContext context) {
 
-    final searchFilter = Provider.of<SearchFilterModel>(context);
+    final searchFilter = Provider.of<SearchFilterProvider>(context);
 
     return DropdownButton<String>(
       value: searchFilter.searchBy,
@@ -28,7 +28,7 @@ class SearchByDropdownState extends State<SearchByDropdown> {
       }).toList(),
       onChanged: (String? newValue) {
         if (newValue != null) {
-          Provider.of<SearchFilterModel>(context, listen: false).searchBy = newValue;
+          Provider.of<SearchFilterProvider>(context, listen: false).searchBy = newValue;
         }
       },
     );

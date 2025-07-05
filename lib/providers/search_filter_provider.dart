@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SearchFilterModel with ChangeNotifier {
+class SearchFilterProvider with ChangeNotifier {
   String _jlpt = 'All';
   String _grade = "All";
   String _searchBy = "All";

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/* model 'Settings' buat nyimpen dan ubah value dari state showRomaji */
-class SettingsModel with ChangeNotifier {
+class SettingsProvider with ChangeNotifier {
   bool _showRomaji = true;
 
   bool get showRomaji => _showRomaji;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kanji_no_yarikata_mobile/data/models/settings.dart';
+import 'package:kanji_no_yarikata_mobile/providers/settings_provider.dart';
 import 'package:provider/provider.dart';
 
 class SettingsDialog extends StatelessWidget {
@@ -8,7 +8,7 @@ class SettingsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final settings = Provider.of<SettingsModel>(context);
+    final settings = Provider.of<SettingsProvider>(context);
 
     return AlertDialog(
       content: Row(
