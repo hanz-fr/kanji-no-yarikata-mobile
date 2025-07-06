@@ -28,7 +28,6 @@ class KanjiDatabase implements KanjiRepository {
       final byteData = await rootBundle.load('assets/database/kanji.db');
       final bytes = byteData.buffer.asUint8List();
       await File(dbPath).writeAsBytes(bytes, flush: true);
-      print('✅ Database overwritten at: $dbPath');
     } else {
       // Only copy once (for production)
       final exists = await File(dbPath).exists();
@@ -36,7 +35,6 @@ class KanjiDatabase implements KanjiRepository {
         final byteData = await rootBundle.load('assets/database/kanji.db');
         final bytes = byteData.buffer.asUint8List();
         await File(dbPath).writeAsBytes(bytes, flush: true);
-        print('📦 Database copied for the first time at: $dbPath');
       }
     }
 
@@ -130,8 +128,6 @@ class KanjiDatabase implements KanjiRepository {
       where: 'kanjiId = ?',
       whereArgs: [kanjiId],
     );
-
-    print("kanji examples:  $kanjiExamples");
 
     return kanjiExamples.isNotEmpty ? List.generate(kanjiExamples.length, (i) => KanjiExamplesModel.fromMap(kanjiExamples[i])) : [];
   }
